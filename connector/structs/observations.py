@@ -2,6 +2,7 @@ import rest.util as util
 import psycopg2
 import time
 from time import gmtime,strftime
+
 class Observations:
 	
 	include = ["timestamp",
@@ -38,7 +39,6 @@ class Observations:
 
 		for i in self.data['obs'][0]:
 			self.items[i] = self.data['obs'][0][i]
-		print self.items
 
 	def toF(self,cel):
 		return (cel * 1.8) + 32
@@ -96,7 +96,7 @@ class Observations:
 
 		if time.time()-60 > lastTime:
 			daysSince = int(((time.time() - lastTime) / 60 / 60 / 24)) + 1
-
+			print "Rebuild last %d days" % daysSince
 			for i in range(daysSince):
 				self.data = util.get('observations/device/%d/?day_offset=%d' % (deviceId,i))
 				for item in self.data['obs']:
@@ -127,7 +127,7 @@ class Observations:
 							pass
 
 	def backFillAll(self, deviceId):
-
+		print "Rebuilding entire database"
 		i = 0
 		conn = psycopg2.connect("dbname='weather' user='postgres' host='127.0.0.1' password='postgres'")
 		cur = conn.cursor()
@@ -162,8 +162,12 @@ class Observations:
 						float(0)))
 						conn.commit()
 					except Exception as e:
-						print e
+						pass
 				i += 1
+
+		print "Finished installation, run ./start"
+
+
 	def uploadCurrent(self):
 
 
