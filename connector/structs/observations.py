@@ -164,6 +164,7 @@ class Observations:
 					except Exception as e:
 						pass
 				i += 1
+				
 
 		print "Finished installation, run ./start"
 
