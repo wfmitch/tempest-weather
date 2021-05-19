@@ -9,7 +9,7 @@ read authKey
 
 echo $authKey > auth.key
 
-
+chmod 700 postgres
 
 if [[ $1 == 'pi' || $1 == 'arm' ]]; then
 	docker pull codyp424/tempest.pi
