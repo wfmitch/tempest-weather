@@ -13,7 +13,7 @@ fi
 chmod 700 postgres
 
 rm -rf postgres/*/.gitignore
-rm -rf postgres/pg_logical/snapshots/.gitignore
+rm -rf postgres/pg_logical/*/.gitignore
 
 if [[ $1 == 'pi' || $1 == 'arm' ]]; then
 	docker pull codyp424/tempest.pi
