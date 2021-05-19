@@ -4,14 +4,16 @@ if [[ $# != 1 ]]; then
 	exit 1
 fi
 
-echo -n "Enter tempest Auth key: "
-read authKey
+if [ ! -f auth.key]; then
+	echo -n "Enter tempest Auth key: "
+	read authKey
 
-echo $authKey > auth.key
-
+	echo $authKey > auth.key
+fi
 chmod 700 postgres
 
 rm -rf postgres/*/.gitignore
+rm -rf postgres/pg_logical/snapshots/.gitignore
 
 if [[ $1 == 'pi' || $1 == 'arm' ]]; then
 	docker pull codyp424/tempest.pi
