@@ -4,7 +4,7 @@ if [[ $# != 1 ]]; then
 	exit 1
 fi
 
-if [ ! -f auth.key]; then
+if [ ! -f auth.key ]; then
 	echo -n "Enter tempest Auth key: "
 	read authKey
 
