@@ -12,8 +12,7 @@ echo $authKey > auth.key
 
 
 if [[ $1 == 'pi' || $1 == 'arm' ]]; then
-	docker load < container/pi.tar
-	docker tag debian:pi dev:debian
+	docker pull codyp424/tempest.pi
 fi
 
 if [[ $1 == 'x86' ]]; then
@@ -21,4 +20,4 @@ if [[ $1 == 'x86' ]]; then
 fi
 
 
-docker run -it -v $(pwd):/proj -v $(pwd)/postgres:/var/lib/postgresql/11/main -p 5432:5432 dev:debian /bin/bash -c "chown -R postgres:postgres /var/lib/postgresql/11/main ;pg_ctlcluster 11 main start; python /proj/connector/main.py --backfillAll"
+docker run -it -v $(pwd):/proj -v $(pwd)/postgres:/var/lib/postgresql/11/main -p 5432:5432 codyp424/tempest.pi /bin/bash -c "chown -R postgres:postgres /var/lib/postgresql/11/main ;pg_ctlcluster 11 main start; python /proj/connector/main.py --backfillAll"
