@@ -80,10 +80,11 @@ class Observations:
 
 		for record in records:
 			date = datetime.datetime.fromtimestamp(record[-2])
+			old = date
 			utc = date.replace(tzinfo=from_zone)
 			date = utc.astimezone(to_zone)
 
-			if date.date() != today.date():
+			if old.date() != today.date():
 				if date.day != day:
 					day = date.day
 					high = -999
