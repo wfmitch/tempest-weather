@@ -116,7 +116,8 @@ class Observations:
 					except Exception as e:
 						pass
 
-				
+		print "Finished installation, run ./start"
+
 
 
 	def backFill(self, deviceId):
@@ -200,7 +201,6 @@ class Observations:
 				i += 1
 				
 
-		print "Finished installation, run ./start"
 
 
 	def uploadCurrent(self):
