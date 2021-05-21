@@ -83,7 +83,7 @@ class Observations:
 			utc = date.replace(tzinfo=from_zone)
 			date = utc.astimezone(to_zone)
 
-			if date != today:
+			if date.date() != today.date():
 				if date.day != day:
 					day = date.day
 					high = -999
