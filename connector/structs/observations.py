@@ -59,7 +59,7 @@ class Observations:
 		from_zone = tz.gettz('UTC')
 		to_zone = tz.gettz('America/Chicago')
 
-		today = datetime.date.today()
+		today = datetime.datetime.utcnow().date()
 
 
 		high = -999.0
