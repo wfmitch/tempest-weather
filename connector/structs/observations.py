@@ -214,7 +214,7 @@ class Observations:
 		float(self.items['station_pressure']),	
 		float(self.items['sea_level_pressure']),	
 		int(self.items['relative_humidity']),	
-		float(self.items['precip']),	
+		float(self.items['precip_accum_local_day']),	
 		int(self.items['precip_minutes_local_day']),	
 		float(self.items['wind_avg']),	
 		float(self.items['wind_direction']),	
